@@ -2,12 +2,18 @@ from __future__ import annotations
 
 import time
 from typing import Any
+from urllib.parse import urlparse
 
 import httpx
 from jose import JWTError, jwt
 from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
+
+
+def is_placeholder_oidc_issuer(issuer_url: str) -> bool:
+    """Return true only for the documented placeholder OIDC issuer host."""
+    return (urlparse(issuer_url).hostname or "").lower() == "login.example.gov"
 
 
 class OIDCValidator:
@@ -39,7 +45,7 @@ class OIDCValidator:
 
         s = get_settings()
         # Skip validation entirely if using the dev placeholder issuer
-        if "login.example.gov" in s.oidc_issuer_url:
+        if is_placeholder_oidc_issuer(s.oidc_issuer_url):
             raise HTTPException(
                 status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
                 detail="OIDC provider not configured. Set OIDC_ISSUER_URL, OIDC_AUDIENCE, and OIDC_JWKS_URL.",

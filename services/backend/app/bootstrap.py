@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import sys
 from dataclasses import dataclass
 from typing import Any
 
@@ -317,22 +318,22 @@ def seed_admin_user() -> tuple[int, int]:
             skipped += 1
             return created, skipped
 
-        password = os.environ.get("ADMIN_INITIAL_PASSWORD", "")
-        if not password:
+        initial_credential = os.environ.get("ADMIN_INITIAL_PASSWORD", "")
+        if not initial_credential:
             import secrets as _sec
 
             # Generate a FISMA-compliant 20-char password
-            password = (
+            initial_credential = (
                 _sec.token_hex(2).upper()[:2] + _sec.token_hex(2).lower()[:2] + "!7" + _sec.token_urlsafe(12)[:12]
             )
-            print(f"[bootstrap] Generated admin password: {password}")
-            print("[bootstrap] Store this securely — it will not be shown again.")
+            print("[bootstrap] Generated initial admin credential. Store it securely; it will not be shown again.")
+            sys.stdout.write(f"{initial_credential}\n")
 
         admin = User(
             username="admin",
             email="admin@selection-board.local",
             display_name="System Administrator",
-            password_hash=hash_password(password),
+            password_hash=hash_password(initial_credential),
             roles=[RoleName.SYSTEM_ADMINISTRATOR.value, RoleName.CASE_OWNER.value],
             is_mfa_required=False,
             is_active=True,

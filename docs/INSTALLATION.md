@@ -32,8 +32,8 @@ These files are intentionally not committed to the repository:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/DrDeathLabs/candidate-selection-board.git
-cd candidate-selection-board
+git clone https://github.com/DrDeathLabs/Candidate_Selection_Board.git
+cd Candidate_Selection_Board
 ```
 
 ### 2. Configure environment
@@ -86,8 +86,8 @@ Sign in with username `admin` and the generated password. You will be required t
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/DrDeathLabs/candidate-selection-board.git
-cd candidate-selection-board
+git clone https://github.com/DrDeathLabs/Candidate_Selection_Board.git
+cd Candidate_Selection_Board
 ```
 
 ### 2. Configure environment

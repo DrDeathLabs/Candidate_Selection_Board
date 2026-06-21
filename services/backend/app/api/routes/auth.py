@@ -20,6 +20,7 @@ from app.domain.enums import AuditEventType
 from app.models.auth import User
 from app.services import auth_service
 from app.services.audit import AuditRecorder
+from app.services.oidc import is_placeholder_oidc_issuer
 
 router = APIRouter()
 audit = AuditRecorder()
@@ -456,7 +457,7 @@ def oidc_login(request: Request, response: Response) -> Any:
     from fastapi.responses import RedirectResponse
 
     s = get_settings()
-    if "login.example.gov" in s.oidc_issuer_url:
+    if is_placeholder_oidc_issuer(s.oidc_issuer_url):
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="OIDC provider is not configured.",

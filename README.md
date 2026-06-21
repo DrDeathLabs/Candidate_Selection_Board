@@ -86,8 +86,8 @@ The full pull-based install path, admin bootstrap command, and version pinning g
 ### 1. Clone
 
 ```bash
-git clone https://github.com/DrDeathLabs/candidate-selection-board.git
-cd candidate-selection-board
+git clone https://github.com/DrDeathLabs/Candidate_Selection_Board.git
+cd Candidate_Selection_Board
 ```
 
 ### 2. Configure
