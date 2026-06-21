@@ -1,0 +1,9 @@
+Name: Alex Johnson
+Email: alex.johnson@example.gov
+Led enterprise application delivery for a 40-person team with budget ownership, contractor supervision, and cloud modernization.
+Directed modernization of financial and workflow systems with DevSecOps controls and production accountability.
+
+Name: Morgan Lee
+Email: morgan.lee@example.gov
+Managed program operations and service reliability for cross-functional mission systems with vendor coordination and budget execution.
+Delivered application sustainment and modernization initiatives across enterprise business platforms.

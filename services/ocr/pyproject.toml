@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "selection-board-ocr"
+version = "0.1.0"
+description = "OCR service wrapper for the selection board platform."
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115.0",
+  "pillow>=11.0.0",
+  "pytesseract>=0.3.13",
+  "python-multipart>=0.0.9",
+  "uvicorn[standard]>=0.32.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.3",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+

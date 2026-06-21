@@ -1,0 +1,48 @@
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "22 4 * * 1"
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [python, javascript-typescript]
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5.0.0
+      - uses: github/codeql-action/init@411bbbe57033eedfc1a82d68c01345aa96c737d7 # v4
+        with:
+          languages: ${{ matrix.language }}
+      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.0.0
+        if: matrix.language == 'python'
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
+        if: matrix.language == 'javascript-typescript'
+        with:
+          node-version: "22"
+      - name: Install backend dependencies
+        if: matrix.language == 'python'
+        working-directory: services/backend
+        run: pip install -e ".[dev]"
+      - name: Install OCR dependencies
+        if: matrix.language == 'python'
+        working-directory: services/ocr
+        run: pip install -e .
+      - name: Install frontend dependencies
+        if: matrix.language == 'javascript-typescript'
+        working-directory: services/frontend
+        run: npm ci
+      - uses: github/codeql-action/autobuild@411bbbe57033eedfc1a82d68c01345aa96c737d7 # v4
+      - uses: github/codeql-action/analyze@411bbbe57033eedfc1a82d68c01345aa96c737d7 # v4
