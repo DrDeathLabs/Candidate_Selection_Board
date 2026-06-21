@@ -104,9 +104,9 @@ Edit `.env` and replace every `change-me` and `replace-with-*` placeholder. Opti
 ### 3. Pull the first-party images
 
 ```bash
-docker pull ghcr.io/drdeathlabs/candidate-selection-board-backend:latest
-docker pull ghcr.io/drdeathlabs/candidate-selection-board-frontend:latest
-docker pull ghcr.io/drdeathlabs/candidate-selection-board-ocr:latest
+docker pull ghcr.io/drdeathlabs/candidate_selection_board-backend:latest
+docker pull ghcr.io/drdeathlabs/candidate_selection_board-frontend:latest
+docker pull ghcr.io/drdeathlabs/candidate_selection_board-ocr:latest
 ```
 
 If you pinned `IMAGE_TAG=vX.Y.Z` in `.env`, replace `latest` in the manual `docker pull` commands with that same version tag.

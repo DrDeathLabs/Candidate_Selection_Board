@@ -16,11 +16,11 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - image_name: candidate-selection-board-backend
+          - image_name: candidate_selection_board-backend
             context: services/backend
-          - image_name: candidate-selection-board-frontend
+          - image_name: candidate_selection_board-frontend
             context: services/frontend
-          - image_name: candidate-selection-board-ocr
+          - image_name: candidate_selection_board-ocr
             context: services/ocr
 
     steps:

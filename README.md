@@ -73,9 +73,9 @@ Candidate Selection Board uses the Business Source License 1.1. Internal use by 
 Candidate Selection Board also ships as public GHCR images for operators who do not want to build locally:
 
 ```bash
-docker pull ghcr.io/drdeathlabs/candidate-selection-board-backend:latest
-docker pull ghcr.io/drdeathlabs/candidate-selection-board-frontend:latest
-docker pull ghcr.io/drdeathlabs/candidate-selection-board-ocr:latest
+docker pull ghcr.io/drdeathlabs/candidate_selection_board-backend:latest
+docker pull ghcr.io/drdeathlabs/candidate_selection_board-frontend:latest
+docker pull ghcr.io/drdeathlabs/candidate_selection_board-ocr:latest
 docker compose -f docker-compose.pull.yml up -d
 ```
 

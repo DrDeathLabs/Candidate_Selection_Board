@@ -36,7 +36,7 @@ x-security-opts: &security-opts
   security_opt:
     - no-new-privileges:true
 
-x-backend-image: &backend-image ghcr.io/drdeathlabs/candidate-selection-board-backend:${IMAGE_TAG:-latest}
+x-backend-image: &backend-image ghcr.io/drdeathlabs/candidate_selection_board-backend:${IMAGE_TAG:-latest}
 
 services:
   reverse-proxy:
@@ -65,7 +65,7 @@ services:
           cpus: "0.5"
 
   frontend:
-    image: ghcr.io/drdeathlabs/candidate-selection-board-frontend:${IMAGE_TAG:-latest}
+    image: ghcr.io/drdeathlabs/candidate_selection_board-frontend:${IMAGE_TAG:-latest}
     ports:
       - "${HOST_BIND_ADDRESS:-127.0.0.1}:${FRONTEND_PORT:-8611}:3000"
     restart: unless-stopped
@@ -231,7 +231,7 @@ services:
           cpus: "0.5"
 
   ocr:
-    image: ghcr.io/drdeathlabs/candidate-selection-board-ocr:${IMAGE_TAG:-latest}
+    image: ghcr.io/drdeathlabs/candidate_selection_board-ocr:${IMAGE_TAG:-latest}
     environment:
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
     command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8050"]
