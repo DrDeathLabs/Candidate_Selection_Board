@@ -24,7 +24,7 @@ jobs:
       - uses: github/codeql-action/init@411bbbe57033eedfc1a82d68c01345aa96c737d7 # v4
         with:
           languages: ${{ matrix.language }}
-      - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.0.0
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6.0.0
         if: matrix.language == 'python'
         with:
           python-version: "3.12"
